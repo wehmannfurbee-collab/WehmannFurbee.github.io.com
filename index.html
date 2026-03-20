@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>贵州森且餐饮管理有限公司 - 连锁奶茶品牌</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #fff5f5 0%, #ffe4e4 25%, #ffd1d1 50%, #ffc0cb 75%, #ffb6c1 100%);
+            min-height: 100vh;
+            color: #8b4513;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255, 182, 193, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255, 105, 180, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(255, 192, 203, 0.15) 0%, transparent 50%);
+            animation: pulsePink 6s ease-in-out infinite;
+        }
+
+        @keyframes pulsePink {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.15); opacity: 0.7; }
+        }
+
+        .bubble-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.4), rgba(255, 182, 193, 0.3));
+            animation: floatBubble 8s ease-in-out infinite;
+            box-shadow: 0 5px 15px rgba(255, 182, 193, 0.3);
+        }
+
+        @keyframes floatBubble {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+            }
+            50% {
+                transform: translateY(-40px) scale(1.1);
+            }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 70px;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 240, 245, 0.98) 100%);
+            backdrop-filter: blur(15px);
+            border-radius: 50px;
+            padding: 50px 80px;
+            border: 4px solid #ffb6c1;
+            box-shadow: 
+                0 25px 70px rgba(255, 182, 193, 0.3),
+                inset 0 2px 0 rgba(255, 255, 255, 0.8);
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo::before {
+            content: '🧋';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 100px;
+            opacity: 0.2;
+            transform: rotate(20deg);
+        }
+
+        .logo h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #8b4513 0%, #a0522d 50%, #cd853f 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 3px;
+        }
+
+        .tagline {
+            font-size: 2rem;
+            color: #cd853f;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+        }
+
+        .subtitle {
+            color: #deb887;
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 2;
+            font-weight: 500;
+        }
+
+        .stats-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-bottom: 90px;
+            flex-wrap: wrap;
+        }
+
+        .stat-card {
+            text-align: center;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 240, 245, 0.95) 100%);
+            padding: 40px 50px;
+            border-radius: 30px;
+            border: 4px solid #ffc0cb;
+            box-shadow: 0 15px 45px rgba(255, 182, 193, 0.25);
+            animation: bounceIn 0.8s ease-out;
+            animation-fill-mode: both;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 60px rgba(255, 182, 193, 0.35);
+        }
+
+        .stat-card:nth-child(1) { animation-delay: 0.1s; }
+        .stat-card:nth-child(2) { animation-delay: 0.2s; }
+        .stat-card:nth-child(3) { animation-delay: 0.3s; }
+        .stat-card:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.8) translateY(60px);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05) translateY(-10px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .stat-number {
+            font-size: 3.8rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ff69b4 0%, #ff6b81 50%, #ff7f50 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .stat-label {
+            color: #cd853f;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .products-container {
+            margin-bottom: 90px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .section-title h2 {
+            font-size: 3rem;
+            color: #8b4513;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .section-title p {
+            color: #deb887;
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .product-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 240, 245, 0.97) 100%);
+            border-radius: 35px;
+            padding: 50px 40px;
+            border: 4px solid #ffc0cb;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(255, 182, 193, 0.2);
+        }
+
+        .product-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 105, 180, 0.08) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .product-card:hover::after {
+            opacity: 1;
+        }
+
+        .product-card:hover {
+            transform: translateY(-20px) scale(1.05);
+            box-shadow: 0 35px 80px rgba(255, 182, 193, 0.3);
+            border-color: #ff69b4;
+        }
+
+        .product-icon {
+            width: 110px;
+            height: 110px;
+            background: linear-gradient(135deg, #ffb6c1 0%, #ff69b4 50%, #ff6b81 100%);
+            border-radius: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.8rem;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 40px rgba(255, 105, 180, 0.4);
+            position: relative;
+            z-index: 1;
+        }
+
+        .product-card h3 {
+            color: #8b4513;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+            position: relative;
+            z-index: 1;
+        }
+
+        .product-card p {
+            color: #cd853f;
+            line-height: 2;
+            font-size: 1.05rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .showcase-area {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 240, 245, 0.95) 100%);
+            border-radius: 40px;
+            padding: 70px;
+            margin-bottom: 90px;
+            border: 4px solid #ffc0cb;
+            box-shadow: 0 25px 70px rgba(255, 182, 193, 0.25);
+        }
+
+        .showcase-area h2 {
+            text-align: center;
+            color: #8b4513;
+            font-size: 2.8rem;
+            margin-bottom: 60px;
+            font-weight: 800;
+        }
+
+        .gallery-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 35px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 30px;
+            overflow: hidden;
+            aspect-ratio: 16/10;
+            box-shadow: 0 20px 50px rgba(255, 182, 193, 0.3);
+            transition: transform 0.4s ease;
+            border: 4px solid #ffd1d1;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.08);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 40px;
+            background: linear-gradient(transparent, rgba(139, 69, 19, 0.95));
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-overlay h4 {
+            color: #fff;
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+        }
+
+        .gallery-overlay p {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .features-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            margin-bottom: 90px;
+        }
+
+        .feature-box {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 240, 245, 0.95) 100%);
+            border-radius: 30px;
+            padding: 40px 32px;
+            border-left: 7px solid;
+            transition: all 0.3s ease;
+            box-shadow: 0 15px 40px rgba(255, 182, 193, 0.2);
+        }
+
+        .feature-box:hover {
+            transform: translateX(12px) translateY(-8px);
+            box-shadow: 0 25px 60px rgba(255, 182, 193, 0.35);
+        }
+
+        .feature-box:nth-child(1) { border-color: #ff69b4; }
+        .feature-box:nth-child(2) { border-color: #ff6b81; }
+        .feature-box:nth-child(3) { border-color: #ff7f50; }
+        .feature-box:nth-child(4) { border-color: #ff69b4; }
+        .feature-box:nth-child(5) { border-color: #ff6b81; }
+        .feature-box:nth-child(6) { border-color: #ff7f50; }
+
+        .feature-box h4 {
+            color: #8b4513;
+            font-size: 1.5rem;
+            margin-bottom: 18px;
+            font-weight: 800;
+        }
+
+        .feature-box p {
+            color: #cd853f;
+            line-height: 1.9;
+            font-size: 1.02rem;
+        }
+
+        .contact-area {
+            text-align: center;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 240, 245, 0.97) 100%);
+            border-radius: 40px;
+            padding: 65px 75px;
+            border: 4px solid #ffb6c1;
+            box-shadow: 0 25px 70px rgba(255, 182, 193, 0.3);
+            margin-bottom: 90px;
+        }
+
+        .contact-area h2 {
+            color: #8b4513;
+            font-size: 2.8rem;
+            margin-bottom: 28px;
+            font-weight: 800;
+        }
+
+        .contact-area p {
+            color: #cd853f;
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            line-height: 1.9;
+            font-weight: 500;
+        }
+
+        .contact-btn {
+            background: linear-gradient(135deg, #ff69b4 0%, #ff6b81 50%, #ff7f50 100%);
+            color: #fff;
+            border: none;
+            padding: 25px 80px;
+            border-radius: 60px;
+            font-size: 1.45rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 15px 40px rgba(255, 105, 180, 0.4);
+            border: 4px solid #ffd1d1;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-12px) scale(1.08);
+            box-shadow: 0 25px 60px rgba(255, 105, 180, 0.5);
+        }
+
+        footer {
+            text-align: center;
+            padding: 50px;
+            color: #deb887;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .tea-decoration {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            opacity: 0.08;
+        }
+
+        .tea-icon {
+            position: absolute;
+            font-size: 60px;
+            animation: floatTea 10s ease-in-out infinite;
+        }
+
+        @keyframes floatTea {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-30px) rotate(10deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="bubble-container" id="bubbleContainer"></div>
+        <div class="tea-decoration" id="teaDecoration"></div>
+        
+        <div class="container">
+            <div class="header">
+                <div class="logo">
+                    <h1>贵州森且餐饮管理有限公司</h1>
+                </div>
+                <p class="tagline">精品连锁奶茶品牌 · 一杯好茶，温暖你我</p>
+                <p class="subtitle">专注连锁奶茶店运营管理，为顾客带来健康美味的茶饮体验</p>
+            </div>
+            
+            <div class="stats-wrapper">
+                <div class="stat-card">
+                    <span class="stat-number">8+</span>
+                    <span class="stat-label">年品牌历史</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">150+</span>
+                    <span class="stat-label">连锁门店</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">特色饮品</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">1M+</span>
+                    <span class="stat-label">忠实顾客</span>
+                </div>
+            </div>
+            
+            <div class="products-container">
+                <div class="section-title">
+                    <h2>特色饮品</h2>
+                    <p>精选优质原料，匠心制作每一杯</p>
+                </div>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-icon">🧋</div>
+                        <h3>招牌珍珠奶茶</h3>
+                        <p>Q弹珍珠搭配香浓奶茶，经典美味，回味无穷，是我们的招牌必点饮品。</p>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-icon">🍵</div>
+                        <h3>现泡鲜奶茶</h3>
+                        <p>选用上等茶叶现泡，搭配鲜奶，茶香浓郁，口感顺滑，健康无添加。</p>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-icon">🥤</div>
+                        <h3>水果茶系列</h3>
+                        <p>新鲜水果搭配清茶，酸甜爽口，清新解腻，夏日首选。</p>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-icon">🍦</div>
+                        <h3>奶昔系列</h3>
+                        <p>香浓奶昔搭配各种口味，绵密顺滑，甜蜜可口，深受年轻人喜爱。</p>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-icon">🍊</div>
+                        <h3>鲜榨果汁</h3>
+                        <p>100%鲜榨果汁，保留水果原味，健康营养，天然无添加。</p>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-icon">🧊</div>
+                        <h3>冰沙系列</h3>
+                        <p>冰爽细腻的口感，各种口味随心选择，夏日消暑必备。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="showcase-area">
+                <h2>品牌故事</h2>
+                <div class="gallery-wrapper">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=800" alt="精美门店">
+                        <div class="gallery-overlay">
+                            <h4>精美门店</h4>
+                            <p>温馨舒适的用餐环境，打造第三生活空间</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800" alt="匠心制作">
+                        <div class="gallery-overlay">
+                            <h4>匠心制作</h4>
+                            <p>每一杯都用心制作，只为最佳口感</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800" alt="优质原料">
+                        <div class="gallery-overlay">
+                            <h4>优质原料</h4>
+                            <p>精选上等茶叶和新鲜水果</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=800" alt="专业团队">
+                        <div class="gallery-overlay">
+                            <h4>专业团队</h4>
+                            <p>经验丰富的茶艺师团队</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="features-wrapper">
+                <div class="feature-box">
+                    <h4>品牌优势</h4>
+                    <p>成熟的连锁运营体系，完善的品牌支持，快速复制成功模式。</p>
+                </div>
+                
+                <div class="feature-box">
+                    <h4>品质保证</h4>
+                    <p>严格的质量控制标准，从原料到成品全程把控，确保品质稳定。</p>
+                </div>
+                
+                <div class="feature-box">
+                    <h4>产品创新</h4>
+                    <p>持续研发新品，紧跟市场趋势，满足不同顾客的需求。</p>
+                </div>
+                
+                <div class="feature-box">
+                    <h4>服务至上</h4>
+                    <p>以顾客为中心，提供贴心周到的服务，提升顾客满意度。</p>
+                </div>
+                
+                <div class="feature-box">
+                    <h4>供应链管理</h4>
+                    <p>完善的供应链体系，确保原料供应稳定，成本可控。</p>
+                </div>
+                
+                <div class="feature-box">
+                    <h4>营销支持</h4>
+                    <p>专业的营销策划团队，提供全方位的品牌推广支持。</p>
+                </div>
+            </div>
+            
+            <div class="contact-area">
+                <h2>加盟合作</h2>
+                <p>携手共创美好未来，让好茶走进千家万户</p>
+                <button class="contact-btn">立即咨询</button>
+            </div>
+            
+            <footer>
+                <p>&copy; 2024 贵州森且餐饮管理有限公司 版权所有</p>
+            </footer>
+        </div>
+    </div>
+    
+    <script>
+        // 创建气泡效果
+        const bubbleContainer = document.getElementById('bubbleContainer');
+        
+        for (let i = 0; i < 15; i++) {
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            const size = Math.random() * 80 + 40;
+            bubble.style.width = size + 'px';
+            bubble.style.height = size + 'px';
+            bubble.style.left = Math.random() * 100 + '%';
+            bubble.style.top = Math.random() * 100 + '%';
+            bubble.style.animationDelay = (Math.random() * 8) + 's';
+            bubble.style.animationDuration = (6 + Math.random() * 4) + 's';
+            bubbleContainer.appendChild(bubble);
+        }
+        
+        // 创建茶饮装饰图标
+        const teaDecoration = document.getElementById('teaDecoration');
+        const teaEmojis = ['🧋', '🍵', '🥤', '🍊', '🍋', '🍇', '🍓', '🥝'];
+        
+        for (let i = 0; i < 12; i++) {
+            const teaIcon = document.createElement('div');
+            teaIcon.className = 'tea-icon';
+            teaIcon.textContent = teaEmojis[Math.floor(Math.random() * teaEmojis.length)];
+            teaIcon.style.left = Math.random() * 100 + '%';
+            teaIcon.style.top = Math.random() * 100 + '%';
+            teaIcon.style.animationDelay = (Math.random() * 10) + 's';
+            teaIcon.style.animationDuration = (8 + Math.random() * 6) + 's';
+            teaDecoration.appendChild(teaIcon);
+        }
+        
+        // 产品卡片进入动画
+        document.querySelectorAll('.product-card').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(50px)';
+            setTimeout(() => {
+                card.style.transition = 'all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 300 + index * 120);
+        });
+    </script>
+</body>
+</html>
